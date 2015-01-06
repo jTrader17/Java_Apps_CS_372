@@ -15,7 +15,7 @@ package pr1_3;
 public class PR1_3 {
 
     /**
-     * This function takes in arguments and prints them to the screen.
+     * This function takes in string arguments and prints them to the screen.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
