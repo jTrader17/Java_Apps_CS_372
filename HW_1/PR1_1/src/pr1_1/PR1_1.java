@@ -13,11 +13,7 @@ package pr1_1;
 
 public class PR1_1 {
 
-    public static class DataOnly {
-    int i;
-    float f;
-    boolean b;
-}
+   
     /**
      * @param args the command line arguments
      */
