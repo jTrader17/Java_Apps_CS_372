@@ -10,7 +10,9 @@ import java.util.Random;
 /**
  *
  * @author jTrader17
+ * @version 1
  * Needs the imported random class
+ * Contains main class which compares random numbers.
  */
 public class PR1_5 {
 

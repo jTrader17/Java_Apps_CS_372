@@ -10,6 +10,8 @@ import java.util.Scanner;
 /**
  *
  * @author jTrader17
+ * @version 1
+ * Contains main function which computes area of a circle
  */
 public class PR1_4 {
 
