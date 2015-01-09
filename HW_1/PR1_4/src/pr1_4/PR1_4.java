@@ -20,7 +20,7 @@ public class PR1_4 {
      * Takes in the radius of a circle and prints the area of the circle
      */
     public static void main(String[] args) {
-        final double pi = 3.14;
+        final double pi = 3.14; //PT: use java.lang.Math.PI
         System.out.print("Please enter a radius of a circle: ");
         Scanner input = new Scanner(System.in);
         double rad = input.nextDouble();
