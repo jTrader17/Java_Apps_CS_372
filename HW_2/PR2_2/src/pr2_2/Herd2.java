@@ -18,10 +18,15 @@ public class Herd2 extends Herd {
     
     public void seeThemHop(){
         Iterator<Gerbil> myIt = herdOfGerbils.iterator();
-        do{
-            Gerbil g = myIt.next();
-            g.hop();
-        } while(myIt.hasNext());
+        if (!myIt.hasNext()){
+            System.out.println("No gerbils :(");
+        }
+        else{
+            do{
+              Gerbil g = myIt.next();
+              g.hop();
+            } while(myIt.hasNext());
+        }
             
     }
 }

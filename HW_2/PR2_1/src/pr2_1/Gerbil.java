@@ -11,7 +11,7 @@ package pr2_1;
  * @author jtrader17
  */
 public class Gerbil {
-    private int gerbilNumber;
+    protected int gerbilNumber;
     
     public Gerbil(){};
     public Gerbil(int gNum){
