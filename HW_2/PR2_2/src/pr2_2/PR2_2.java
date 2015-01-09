@@ -16,7 +16,7 @@ public class PR2_2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Herd h = new Herd();
+        Herd2 h = new Herd2();
         h.formTheHerd(10);
         h.seeThemHop();
     }

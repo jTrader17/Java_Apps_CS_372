@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author jtrader17
  */
 public class Herd {
-    private ArrayList<Gerbil> herdOfGerbils = new ArrayList<Gerbil>();
+    protected ArrayList<Gerbil> herdOfGerbils = new ArrayList<Gerbil>();
     
     public Herd(){};
     
