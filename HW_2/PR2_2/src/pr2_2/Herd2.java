@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class Herd2 extends Herd {
     
     public Herd2(){};
-    
+    //PT -- javadocs ... -2
     public void seeThemHop(){
         Iterator<Gerbil> myIt = herdOfGerbils.iterator();
         if (!myIt.hasNext()){
@@ -23,6 +23,7 @@ public class Herd2 extends Herd {
         }
         else{
             do{
+                //PT -- you could even do myIt.next().hop();
               Gerbil g = myIt.next();
               g.hop();
             } while(myIt.hasNext());

@@ -13,6 +13,7 @@ package pr2_4;
 public class Calculate {
     public Calculate(){}
     
+    //PT -- why do you have two duplicate methods? -2
     public static void CalculatePi(int numTerms){
         double pi = 0.0;
         double nextTerm;

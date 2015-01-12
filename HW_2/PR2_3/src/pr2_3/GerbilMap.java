@@ -38,7 +38,7 @@ public class GerbilMap {
         }
         return myGerbils;
     }
-        
+        //PT -- javadocs. -2
     public void addGerbils(ArrayList<String> myGerbils){
         //put the gerbils in a map
         int i = 0;

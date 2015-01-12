@@ -16,6 +16,7 @@ public class PR2_4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //PT -- check to make sure args.length > 0
         int numTerms = Integer.parseInt(args[0]);
         Calculate.CalculatePi(numTerms);
     }
