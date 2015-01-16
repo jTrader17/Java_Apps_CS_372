@@ -5,6 +5,7 @@
  */
 
 package pr3_2;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +17,22 @@ public class PR3_2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try{
+            ArrayList<Shape> myShapes = new ArrayList();
+            myShapes.add(new Rectangle(4, 3));
+            myShapes.add(new Triangle(2,3,3));
+            myShapes.add(new Ellipse(4,3));
+            
+            for (Shape s : myShapes){
+                System.out.println(s.getArea());
+                System.out.println(s.getPerimeter());
+                System.out.println(s.toString());
+            }
+        }
+        catch(IllegalArgumentException ex){
+            System.out.println(ex.getMessage());
+        }
+        
     }
     
 }

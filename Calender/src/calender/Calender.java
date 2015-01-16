@@ -4,22 +4,20 @@
  * and open the template in the editor.
  */
 
-package test;
-
+package calender;
 
 /**
  *
  * @author jtrader17
  */
-public class Test {
+public class Calender {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestForm my = new TestForm();
-        my.addWindowListener(TestForm.exit);
-        my.setVisible(true);
+        Scheduler mySched = new Scheduler();
+        mySched.setVisible(true);
     }
     
 }

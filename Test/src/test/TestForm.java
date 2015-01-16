@@ -43,7 +43,7 @@ public class TestForm extends javax.swing.JFrame {
         initComponents();
         Point p = new Point(myRand.nextInt(2000), myRand.nextInt(1000));
         this.setLocation(p);
-        timer.schedule(new MakeNew(), 50);
+        timer.schedule(new MakeNew(), 5000);
     }
 
     /**
