@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import javax.swing.table.DefaultTableModel;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 /**
  *
  * @author jtrader17
@@ -203,9 +204,9 @@ public class Scheduler extends javax.swing.JFrame {
             event = (this.event.getText());
             loc = (this.location.getText());
             Date thisDate = new Date (year, month, date);
-            SimpleDateFormat ft = new SimpleDateFormat("MM/dd/YYYY");
+            SimpleDateFormat ft = new SimpleDateFormat("YYYY, MM/dd");
             Object[] myObjects = new Object[]{ft.format(thisDate), event, loc};
-            dm.insertRow(0, myObjects);
+            addRow(myObjects);
             output(myObjects);
             
             
@@ -276,7 +277,7 @@ public class Scheduler extends javax.swing.JFrame {
                    while ((first = rdr.readLine()) != null){
                        if(i%3==2){ 
                           Object[] myObjects = new Object[]{third, second, first};
-                          dm.insertRow(0, myObjects); 
+                          addRow(myObjects);
                        }
                        third = second;
                        second = first;
@@ -288,6 +289,23 @@ public class Scheduler extends javax.swing.JFrame {
          }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+        }
+    }
+    
+    private void addRow(Object[] obj){
+        remove();
+        Record myRecord = new Record(obj);
+        MyRecords.addRecord(myRecord);
+        ArrayList<Record> sorted = MyRecords.getSorted();
+        for (Record r: sorted){
+            dm.addRow(r.getAllData());
+        }
+    }
+    
+    private void remove(){
+        int num = dm.getRowCount();
+        for(int i=0; i<num; i++){
+            dm.removeRow(0);
         }
     }
 
