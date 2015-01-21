@@ -23,6 +23,7 @@ public class Scheduler extends javax.swing.JFrame {
     private DefaultTableModel dm = new DefaultTableModel();
     /**
      * Creates new form Scheduler
+     * Also formats the table
      */
     public Scheduler() {
         initComponents();
@@ -62,6 +63,7 @@ public class Scheduler extends javax.swing.JFrame {
         aEvent = new javax.swing.JButton();
         year1 = new javax.swing.JLabel();
         error = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,6 +115,13 @@ public class Scheduler extends javax.swing.JFrame {
 
         year1.setText("Year");
 
+        jButton1.setText("Search Here!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,7 +159,9 @@ public class Scheduler extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(183, 183, 183)
-                                .addComponent(aEvent)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addComponent(aEvent))))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -186,6 +197,8 @@ public class Scheduler extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(aEvent)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -194,6 +207,11 @@ public class Scheduler extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     * adds an event by getting data from text input fields
+     */
     private void aEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aEventActionPerformed
         int date, month, year;
         String event, loc;
@@ -215,6 +233,17 @@ public class Scheduler extends javax.swing.JFrame {
             error.setText("Please enter valid values.");
         }
     }//GEN-LAST:event_aEventActionPerformed
+
+    /**
+     * 
+     * @param evt 
+     * Creates a new JFrame search window
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Search mySearch = new Search(this, dm);
+        mySearch.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,11 +280,17 @@ public class Scheduler extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * 
+     * @param my 
+     * outputs new record into text file
+     */
     private void output(Object[] my){
         File myFile = new File("myFile.txt") ;
         try{
            BufferedWriter wrtr = new BufferedWriter(new FileWriter(myFile, true));
            for(Object o : my){
+               //should have three objects
                wrtr.write(o.toString());
                wrtr.newLine();
            }
@@ -267,7 +302,10 @@ public class Scheduler extends javax.swing.JFrame {
     
     }
     
-    private void input(){
+    /**
+     * Adds all objects in text file to the table
+     */
+    public void input(){
         File myFile = new File("myFile.txt");
         String first = "", second ="", third ="";
         int i = 0;
@@ -292,6 +330,11 @@ public class Scheduler extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * 
+     * @param obj 
+     * adds obj to the table as a a row
+     */
     private void addRow(Object[] obj){
         remove();
         Record myRecord = new Record(obj);
@@ -302,6 +345,9 @@ public class Scheduler extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * removes all rows in the table
+     */
     private void remove(){
         int num = dm.getRowCount();
         for(int i=0; i<num; i++){
@@ -314,6 +360,7 @@ public class Scheduler extends javax.swing.JFrame {
     private javax.swing.JTextPane date;
     private javax.swing.JLabel error;
     private javax.swing.JTextPane event;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

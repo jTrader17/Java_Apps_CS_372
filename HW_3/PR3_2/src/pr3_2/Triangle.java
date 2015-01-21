@@ -13,6 +13,14 @@ package pr3_2;
 public class Triangle extends Shape{
     private int s1, s2, s3;
     
+    /**
+     * 
+     * @param s1
+     * @param s2
+     * @param s3
+     * @throws IllegalArgumentException 
+     * Takes in three sides of triangle and makes sure all three together make a valid triangle
+     */
     public Triangle(int s1, int s2, int s3) throws IllegalArgumentException {
         this.s1 = s1;
         this.s2 = s2;
@@ -23,17 +31,29 @@ public class Triangle extends Shape{
             throw new IllegalArgumentException("Cannot have a side less than or equal to zero");
     }
     
+    /**
+     * 
+     * @return perimeter of triangle
+     */
     @Override
     public double getPerimeter(){
         return s1+s2+s3;
     }
     
+    /**
+     * 
+     * @return area of triangle
+     */
     @Override
     public double getArea(){
         double p = 1.0*getPerimeter()/2.0;
         return Math.sqrt(p*(p-s1)*(p-s2)*(p-s3)); 
     }
     
+    /**
+     * 
+     * @return string representation of triangle
+     */
     @Override
     public String toString(){
         return String.format("This is a triangle with sides %d, %d, and %d", s1, s2, s3);

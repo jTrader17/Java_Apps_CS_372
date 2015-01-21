@@ -23,6 +23,7 @@ public class PR3_2 {
             myShapes.add(new Triangle(2,3,3));
             myShapes.add(new Ellipse(4,3));
             
+            //base class shape has all of these functions
             for (Shape s : myShapes){
                 System.out.println(s.getArea());
                 System.out.println(s.getPerimeter());

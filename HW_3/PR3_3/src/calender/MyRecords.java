@@ -17,9 +17,14 @@ import java.util.Set;
 public class MyRecords {
     private static HashMap<String, Record> records = new HashMap(0);
     
+    /**
+     * 
+     * @return sorted ArrayList of Records by date
+     */
     public static ArrayList<Record> getSorted(){
         ArrayList<Record> sorted = new ArrayList();
         ArrayList<String> sortedDate = new ArrayList();
+        //Date is the key
         Set<String> kset = records.keySet();
         for(String date : kset){
             sortedDate.add(date);
@@ -31,6 +36,11 @@ public class MyRecords {
         return sorted;
     }
     
+    /**
+     * 
+     * @param r 
+     * adds the record r
+     */
     public static void addRecord(Record r){
         records.put(r.getDate(), r);
     }
