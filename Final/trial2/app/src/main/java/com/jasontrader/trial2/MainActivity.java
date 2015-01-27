@@ -63,12 +63,11 @@ public class MainActivity extends ActionBarActivity {
         my.setText("");
         c = Calc.calculate(equ, v, this);
         u = Calc.getUnc(equ);
-        end(v);
-
+        Intent in = new Intent(this, FinalShow.class);
+        startActivity(in);
     }
 
     public void end(View v){
-        Intent i = new Intent(this, FinalShow.class);
-        startActivity(i);
+
     }
 }

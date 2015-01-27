@@ -14,10 +14,10 @@ public class FinalShow extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_show);
-        //Intent i = getIntent();
+        Intent i = getIntent();
         TextView my = (TextView) this.findViewById(R.id.total);
-        String myFinal = String.format("The total is: 5d\nThe uncertainty is: %d\nThe percent uncertainty is: %d", MainActivity.c, MainActivity.u, MainActivity.u/MainActivity.c*100);
-        my.setText(myFinal);
+        //String myFinal = String.format("The total is: 5d\nThe uncertainty is: %d\nThe percent uncertainty is: %d", MainActivity.c, MainActivity.u, MainActivity.u/MainActivity.c*100);
+        my.setText("");
 
     }
 

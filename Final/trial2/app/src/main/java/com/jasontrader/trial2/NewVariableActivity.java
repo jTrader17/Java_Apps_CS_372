@@ -23,7 +23,7 @@ public class NewVariableActivity extends ActionBarActivity {
         Intent i = getIntent();
         String prompt = String.format("Wild Variable appeared!\nWhat is the value and\nuncertainty of variable %d", MainActivity.var_count+1);
         player = MediaPlayer.create(getApplicationContext(), R.raw.battle);
-        player.start();
+        //player.start();
         TextView my = (TextView) this.findViewById(R.id.mess);
         my.setText(prompt);
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "Pokemon GB.ttf");
