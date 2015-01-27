@@ -1,6 +1,7 @@
 package com.jasontrader.trial2;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,15 +11,18 @@ import android.widget.TextView;
 
 public class FinalShow extends ActionBarActivity {
 
+    private MediaPlayer player;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_show);
         Intent i = getIntent();
-        TextView my = (TextView) this.findViewById(R.id.total);
-        //String myFinal = String.format("The total is: 5d\nThe uncertainty is: %d\nThe percent uncertainty is: %d", MainActivity.c, MainActivity.u, MainActivity.u/MainActivity.c*100);
-        my.setText("");
-
+        TextView my = (TextView) findViewById(R.id.total);
+        String myFinal = String.format("The total is: %f\nThe uncertainty is: %f\nThe percent uncertainty is: %f", MainActivity.c, MainActivity.u, (MainActivity.u / MainActivity.c) * 100);
+        my.setText(myFinal.toString());
+        player = MediaPlayer.create(getApplicationContext(), R.raw.victory);
+        player.start();
     }
 
 

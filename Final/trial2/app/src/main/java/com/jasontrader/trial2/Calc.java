@@ -84,6 +84,7 @@ public class Calc {
                     left -= term(eq, vi, my);
                     break;
                 default:
+                    MainActivity.c= left;
                     return left;
             }
         }
@@ -154,6 +155,7 @@ public class Calc {
             }
         }
         unc = findUnc(parts);
+        MainActivity.u = unc;
         return unc;
     }
 
