@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.jasontrader.uncertainty.NewVariable">
+
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/outline"
+        android:layout_marginBottom="153dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:text="prompt here"
+        android:id="@+id/mess"
+        android:layout_alignLeft="@+id/myImageView"
+        android:layout_alignTop="@+id/myImageView"
+        android:layout_alignRight="@+id/myImageView"
+        android:layout_alignBottom="@+id/myImageView"
+        android:layout_margin="1dp"
+        android:gravity="center" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/value"
+        android:layout_below="@+id/mess"
+        android:layout_alignLeft="@+id/mess"
+        android:layout_alignStart="@+id/mess"
+        android:hint="value" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/mess"
+        android:layout_alignEnd="@+id/mess"
+        android:onClick="onClick" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/unc"
+        android:layout_below="@+id/value"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="uncertainty" />
+
+
+</RelativeLayout>
