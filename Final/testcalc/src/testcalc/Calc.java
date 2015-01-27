@@ -137,7 +137,7 @@ public class Calc {
         }
     }
     
-    public static void getUnc(String eq){ 
+    public static double getUnc(String eq){ 
         ArrayList<String> parts = new ArrayList(0);
         if (pmpositions.isEmpty()){
             parts.add(eq);
@@ -151,6 +151,7 @@ public class Calc {
             }
         }
         unc = findUnc(parts);
+        return unc;
     }
     
     private static double findUnc(ArrayList<String> parts){
@@ -164,6 +165,8 @@ public class Calc {
     }
     
     private static double calculateUnc(String part){
+        boolean beenNum = false;
+        boolean div = false;
         HashMap<Variable, Integer> theseVars = new HashMap();
         for(int q=0; q<part.length(); q++){
             char c = part.charAt(q);
@@ -187,10 +190,102 @@ public class Calc {
             return 0.0;
         }
         else{
-            
+            int c =-1;
+            double leftTot = 1.0;
+            double leftUnc = 0.0;
+            while(true){
+                c++;
+                if(!(c<part.length()))
+                    break;
+                char inQ = part.charAt(c);//pretty much switching on c
+                if (Character.isDigit(inQ)){
+                    beenNum = true;
+                    String temp = "";
+                    while(Character.isDigit(inQ) || inQ == '.'){
+                        temp+=inQ;
+                        c++;
+                        if(!(c<part.length())){
+                            if(div){
+                                leftUnc/=Double.parseDouble(temp);
+                                return leftUnc;
+                            }
+                            else{
+                                leftUnc*=Double.parseDouble(temp);
+                                return leftUnc;
+                            }
+                        }
+                        inQ = part.charAt(c);
+                    }
+                    c--;
+                    if(div){
+                        leftTot/=Double.parseDouble(temp);
+                        leftUnc/=Double.parseDouble(temp);
+                        div = false;
+                    }
+                    else{
+                        leftTot*=Double.parseDouble(temp);
+                        leftUnc*=Double.parseDouble(temp);
+                    }
+                    
+                }
+                else if (Character.isLetter(inQ)){
+                    String temp = "";
+                    while(Character.isLetter(inQ)){
+                        temp+=inQ;
+                        c++;
+                        if(!(c<part.length())){
+                            if(div && beenNum){
+                                Variable vv = vars.get(temp);
+                                double myTemp = leftTot;
+                                leftTot/=vv.getValue();
+                                leftUnc=leftTot*Math.sqrt(Math.pow(leftUnc/myTemp, 2) + Math.pow(vv.getUnc()/vv.getValue(), 2));
+                                return leftUnc;
+                            }
+                            else if(!div && beenNum){
+                                Variable vv = vars.get(temp);
+                                double myTemp = leftTot;
+                                leftTot*=vv.getValue();
+                                leftUnc=leftTot*Math.sqrt(Math.pow(leftUnc/myTemp, 2) + Math.pow(vv.getUnc()/vv.getValue(), 2));
+                                return leftUnc;
+                            }
+                            else if(!div){
+                                Variable vv = vars.get(temp);
+                                leftTot=vv.getValue();
+                                leftUnc=vv.getUnc();
+                                return leftUnc;
+                            }
+                        }
+                        inQ = part.charAt(c);
+                    }
+                    c--;
+                    if(div && beenNum){
+                        Variable vv = vars.get(temp);
+                        double myTemp = leftTot;
+                        leftTot/=vv.getValue();
+                        leftUnc=leftTot*Math.sqrt(Math.pow(leftUnc/myTemp, 2) + Math.pow(vv.getUnc()/vv.getValue(), 2));
+                        div = false;
+                    }
+                    else if(!div && beenNum){
+                        Variable vv = vars.get(temp);
+                        double myTemp = leftTot;
+                        leftTot*=vv.getValue();
+                        leftUnc=leftTot*Math.sqrt(Math.pow(leftUnc/myTemp, 2) + Math.pow(vv.getUnc()/vv.getValue(), 2));
+                    }
+                    else if(!div){
+                        Variable vv = vars.get(temp);
+                        leftTot=vv.getValue();
+                        leftUnc=vv.getUnc();
+                        return leftUnc;
+                    }
+                    beenNum=true;
+                }
+                else if(inQ == '/'){
+                    div= true;
+                }
+                else if(inQ == '*'){}
+            }
+            return leftUnc;
         }
-        
-        return 0.0;
     }
 }
 
