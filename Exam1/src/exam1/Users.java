@@ -63,7 +63,7 @@ public class Users {
      * Outputs all user's and their totals to a text file
      */
     public static void cleanup(){
-        File myFile = new File("C:\\users\\jTrader17\\documents\\myFile.txt") ;
+        File myFile = new File("myFile.txt") ;
         Set<String> keys = users.keySet();
         try{
            BufferedWriter wrtr = new BufferedWriter(new FileWriter(myFile));
@@ -85,7 +85,7 @@ public class Users {
      */
     public static void initialize(){
         String first, second = "";
-        File myFile = new File("C:\\users\\jTrader17\\documents\\myFile.txt") ;
+        File myFile = new File("myFile.txt") ;
         int i = 0;
         try{
             if(myFile.exists()){
