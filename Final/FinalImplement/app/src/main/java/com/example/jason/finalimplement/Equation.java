@@ -50,4 +50,8 @@ public class Equation extends ActionBarActivity {
         startActivity(i);
         entry.setText("");
     }
+
+    public void end(View v){
+        this.finish();
+    }
 }
