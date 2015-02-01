@@ -16,13 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-
+/**
+ * Initializes all variables
+ */
 public class Initialize extends ActionBarActivity {
     private String eq;
     private ArrayList<Variable> theseVars;
     private ArrayList<EditText> entries = new ArrayList(0);
     private MediaPlayer player;
 
+    /**
+     *
+     * @param savedInstanceState
+     * allows user to input all variable's values and uncertainties
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,7 @@ public class Initialize extends ActionBarActivity {
         l.addView(start);
 
         for (int i=0; i<theseVars.size(); i++) {
+            //create for each variable
             TextView prompt = new TextView(this);
             prompt.setLayoutParams(lp);
             prompt.setText(String.format("What is the value of %s?", theseVars.get(i).getName()));
@@ -77,6 +85,11 @@ public class Initialize extends ActionBarActivity {
         l.addView(b);
     }
 
+    /**
+     *
+     * @param v
+     * display results
+     */
     public void initButtonClick(View v){
         double unc, value = 0.0;
         for(int i = 0; i<entries.size(); i++){

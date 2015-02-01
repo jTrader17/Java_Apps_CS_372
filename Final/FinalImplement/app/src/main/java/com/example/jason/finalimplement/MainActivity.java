@@ -9,10 +9,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-
+/**
+ * Shows instructions for the app
+ */
 public class MainActivity extends ActionBarActivity {
     private MediaPlayer player;
 
+    /**
+     *
+     * @param savedInstanceState
+     * creates instructions with music
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +30,11 @@ public class MainActivity extends ActionBarActivity {
         player.start();
     }
 
+    /**
+     *
+     * @param v
+     * takes user to interface
+     */
     public void firstClick(View v){
         player.stop();
         Intent i = new Intent(this, Equation.class);

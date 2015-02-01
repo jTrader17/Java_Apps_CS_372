@@ -8,6 +8,7 @@ import android.view.View;
 /**
  *
  * @author Jason Trader
+ * Calculates values and uncertainties
  */
 public class Calc {
     private static ArrayList<Integer> pmpositions = new ArrayList(0);
@@ -17,6 +18,11 @@ public class Calc {
     private static double unc;
 
 
+    /**
+     *
+     * @param eq
+     * gets next token
+     */
     private static void get_token(String eq){
         if(i< eq.length()){
             curr_token = "" + eq.charAt(i);
@@ -24,6 +30,12 @@ public class Calc {
         }
     }
 
+    /**
+     *
+     * @param eq
+     * @return var
+     * gets whole variable
+     */
     private static String get_var(String eq){
         String var = curr_token;
         while (i<eq.length() && checkVar(eq.charAt(i))){
@@ -34,10 +46,20 @@ public class Calc {
         return var;
     }
 
+    /**
+     *
+     * @param c
+     * checks if char is a letter
+     */
     private static boolean checkVar(char c){
         return Character.isLetter(c);
     }
 
+    /**
+     *
+     * @param eq
+     * gets whole number
+     */
     private static double get_num(String eq){
         String num = curr_token;
         while (i<eq.length() && checkNum(eq.charAt(i))){
@@ -48,6 +70,11 @@ public class Calc {
         return Double.parseDouble(num);
     }
 
+    /**
+     *
+     * @param c
+     * checks if character is number
+     */
     private static boolean checkNum(Character c){
         if(Character.isDigit(c) || c.equals('.')){
             return true;
@@ -55,14 +82,25 @@ public class Calc {
         return false;
     }
 
+    /**
+     *
+     * @param eq
+     * calculates value of expression
+     */
     public static double calculate(String eq){
-
+        //reset variables because static
         pmpositions.clear();
         pmpositions.add(-1);
         i = 0;
         get_token(eq);
         return expr(eq);
     }
+
+    /**
+     *
+     * @param eq
+     * finds expression
+     */
     private static double expr(String eq){
         double left = term(eq);
         while(true){
@@ -83,6 +121,11 @@ public class Calc {
         }
     }
 
+    /**
+     *
+     * @param eq
+     * gets term
+     */
     private static double term(String eq){
         double left = prim(eq);
 
@@ -102,6 +145,11 @@ public class Calc {
         }
     }
 
+    /**
+     *
+     * @param eq
+     * gets primary
+     */
     private static double prim(String eq){
         switch (curr_token){
             case "1":
@@ -134,6 +182,11 @@ public class Calc {
         }
     }
 
+    /**
+     *
+     * @param eq
+     * get uncertainty
+     */
     public static double getUnc(String eq){
         ArrayList<String> parts = new ArrayList(0);
         if (pmpositions.isEmpty()){
@@ -151,6 +204,11 @@ public class Calc {
         return unc;
     }
 
+    /**
+     *
+     * @param parts
+     * breaks apart string where - or +
+     */
     private static double findUnc(ArrayList<String> parts){
         ArrayList<Double> uncs = new ArrayList(0);
         for(String part: parts)
@@ -161,6 +219,11 @@ public class Calc {
         return Math.sqrt(totalUnc);
     }
 
+    /**
+     *
+     * @param part
+     * gets uncertainty for tiny section
+     */
     private static double calculateUnc(String part){
         boolean beenNum = false;
         boolean div = false;
@@ -285,6 +348,11 @@ public class Calc {
         }
     }
 
+    /**
+     *
+     * @param eq
+     * gets all variables in the expression
+     */
     public static ArrayList<Variable> findAllVars(String eq){
         vars.clear();
         ArrayList<Variable> vs = new ArrayList(0);

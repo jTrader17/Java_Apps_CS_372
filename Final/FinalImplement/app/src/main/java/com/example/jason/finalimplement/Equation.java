@@ -10,9 +10,16 @@ import android.widget.TextView;
 import android.widget.EditText;
 import java.util.ArrayList;
 
-
+/**
+ * Allows user to input equation
+ */
 public class Equation extends ActionBarActivity {
 
+    /**
+     *
+     * @param savedInstanceState
+     * makes interface
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,11 @@ public class Equation extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * @param v
+     * open activity for allowing user to input data
+     */
     public void equationClick(View v){
         EditText entry = (EditText) this.findViewById(R.id.entry);
         String eq = entry.getText().toString();
@@ -51,6 +63,11 @@ public class Equation extends ActionBarActivity {
         entry.setText("");
     }
 
+    /**
+     *
+     * @param v
+     * kill app
+     */
     public void end(View v){
         this.finish();
     }

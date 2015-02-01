@@ -9,11 +9,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-
+/**
+ * display final result
+ */
 public class Display extends ActionBarActivity {
     private String eq;
     private MediaPlayer player;
 
+    /**
+     *
+     * @param savedInstanceState
+     * show results
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +61,11 @@ public class Display extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     *
+     * @param v
+     * start over
+     */
     public void finalClick(View v){
         player.stop();
         this.finish();
