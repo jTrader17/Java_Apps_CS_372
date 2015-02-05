@@ -21,6 +21,7 @@ public class MyRecords {
      * 
      * @return sorted ArrayList of Records by date
      */
+     //PT -- I wanted you to use the Comparator approach here. This works, but not optimal -3
     public static ArrayList<Record> getSorted(){
         ArrayList<Record> sorted = new ArrayList();
         ArrayList<String> sortedDate = new ArrayList();
