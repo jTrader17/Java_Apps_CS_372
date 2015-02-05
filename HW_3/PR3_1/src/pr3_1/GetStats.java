@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @version 1
  */
 public class GetStats extends Stats{
+    //PT -- why have this constructor if it doesn't do anything?
     public GetStats(){};
     
     /**
