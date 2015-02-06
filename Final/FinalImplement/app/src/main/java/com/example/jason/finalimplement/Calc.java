@@ -225,6 +225,7 @@ public class Calc {
      * gets uncertainty for tiny section
      */
     private static double calculateUnc(String part){
+        //PT -- this function should probably be refactored into smaller functions, at least for readability
         boolean beenNum = false;
         boolean div = false;
         HashMap<Variable, Integer> theseVars = new HashMap();
