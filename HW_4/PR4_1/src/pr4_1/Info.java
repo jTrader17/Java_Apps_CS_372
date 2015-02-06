@@ -15,7 +15,7 @@ public class Info {
     private String address;
     private String notes;
     private int rating;
-    
+    //PT -- javadoc? -4
     public String getName(){
         return name;
     }
@@ -35,7 +35,7 @@ public class Info {
     public Info(String name, String address, int rating, String notes){
         this.name=name;
         this.address=address;
-        this.rating=rating;
+        this.rating=rating; //PT -- Make sure rating in [1,5]
         this.notes=notes;
     }
     
