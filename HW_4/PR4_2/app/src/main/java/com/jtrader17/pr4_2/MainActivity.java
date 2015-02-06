@@ -41,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private boolean getFlip(){
-        Random my = new Random();
+        Random my = new Random(); //PT -- make this a member variable, so you're not making a new object for each flip. -5
         return my.nextBoolean();
     }
 
